@@ -9,6 +9,7 @@ class Pi:
     """ Basic information and state about the platform """
     def __init__(self):
         cpuinfo = self.get_cpuinfo()
+        print cpuinfo
         self.hardware = cpuinfo['hardware']
         self.revision = cpuinfo['revision']
         self.serial = cpuinfo['serial']
@@ -17,9 +18,10 @@ class Pi:
         self.wlan0_mac = self.get_mac_address('wlan0')
 
     def get_cpuinfo(self):
-        """ Uses 'cat /proc/cpuinfo' from the shell to obtain attributes of cpu 
+        """ Uses 'cat /proc/cpuinfo' from the shell to obtain attributes of cpu
             Attributes are returned as a dictionary.
-            Multicore CPUs have repeated attributes and only the last values are returned
+            Multicore CPUs, like Pi 3, have repeated attributes and only 
+            the last values are returned.
         """
         cpuinfo = {}
         proc = subprocess.Popen(['cat', '/proc/cpuinfo'], stdout=subprocess.PIPE)
@@ -47,4 +49,3 @@ pi = Pi()
 print "serial:", pi.serial
 print "eth0:", pi.get_mac_address('eth0')
 print "wlan0:", pi.get_mac_address('wlan0')
-

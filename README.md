@@ -1,2 +1,4 @@
-# raspberry
-Simple python scripts for managing raspberry pi.
+raspberry
+=========
+
+Simple python scripts for managing a raspberry pi.
